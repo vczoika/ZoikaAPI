@@ -1,19 +1,19 @@
 {
-   "movie": [
+   "test": [
       {
-         "movieName": "El Camino: A Breaking Bad Film"
+         "name": "El Camino: A Breaking Bad Film"
       },
       {
-         "movieName": "Arremesso Final"
+         "name": "Arremesso Final"
       },
       {
-         "movieName": "Love 101"
+         "name": "Love 101"
       },
       {
-         "movieName": "The English Game"
+         "name": "The English Game"
       },
       {
-         "movieName": "Soneto de Sangue"
+         "name": "Soneto de Sangue"
       }
    ]
 }

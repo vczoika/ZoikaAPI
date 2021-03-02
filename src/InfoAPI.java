@@ -13,19 +13,28 @@ public class InfoAPI {
         int listSize = 1;
         System.out.println("Input maximum size for list: ");
         int maximumListSize = userInput.nextInt();
+
+        Scanner JSONNaming = new Scanner(System.in);
+        System.out.println("Name JSON start: ");
+        String firstName = JSONNaming.nextLine();
+        System.out.println("Named " + firstName + "!");
+        System.out.print("Name second JSON name: ");
+        String secondName = JSONNaming.nextLine();
+        System.out.println("Named " + secondName + "!");
+
         try {
             PrintWriter JSONWriter = new PrintWriter("scrape.json"); // Creates txt file to print info
             Document doc = Jsoup.connect(url).get(); // Gets Website info
             Elements htmlGet = doc.select("div.mtitle"); // Selects the element of the website
-            JSONWriter.println("{\n" + "   " + "\"movie\": [");
+            JSONWriter.println("{\n" + "   " + "\"" + firstName +"\": [");
             for (Element movieList:htmlGet) { // Runs while there's movies
                 if (listSize <= (maximumListSize - 1)) {
                     listSize++;
-                    JSONWriter.print("      " + "{\n" + "         " + "\"movieName\": " + "\"" + movieList.getElementsByTag("a").first().text() + "\"\n" + "      " + "}" + "," + "\n"); // Writes to file
+                    JSONWriter.print("      " + "{\n" + "         " + "\"" + secondName + "\": " + "\"" + movieList.getElementsByTag("a").first().text() + "\"\n" + "      " + "}" + "," + "\n"); // Writes to file
                     System.out.println(movieList.getElementsByTag("a").first().text()); // Prints to console, check if it's correct!
                 } else if (listSize == maximumListSize) {
                     listSize++;
-                    JSONWriter.print("      " + "{\n" + "         " + "\"movieName\": " + "\"" + movieList.getElementsByTag("a").first().text() + "\"\n" + "      " + "}" + "\n");
+                    JSONWriter.print("      " + "{\n" + "         " + "\"" + secondName + "\": " + "\"" + movieList.getElementsByTag("a").first().text() + "\"\n" + "      " + "}" + "\n");
                     System.out.println(movieList.getElementsByTag("a").first().text());
                 }
             } JSONWriter.println("   " + "]" + "\n}");
